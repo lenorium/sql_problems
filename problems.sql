@@ -35,6 +35,8 @@ select e.location,
     on s.employee_id = e.id
  group by location;
 
+-- --------------------------------------------------------------------------------------------------------------------
+
 '''Salaries Differences
 
 https://platform.stratascratch.com/coding/10308-salaries-differences?code_type=1
@@ -75,6 +77,8 @@ select abs(max(salary) filter (where department = 'marketing') - max(salary) fil
   left join db_dept dept
        on emp.department_id = dept.id
 
+-- --------------------------------------------------------------------------------------------------------------------
+
 '''Finding Updated Records
 
 https://platform.stratascratch.com/coding/10299-finding-updated-records?code_type=1
@@ -101,3 +105,5 @@ select id,
   from ms_employee_salary
  group by last_name, first_name, department_id, id
  order by id
+
+-- --------------------------------------------------------------------------------------------------------------------
