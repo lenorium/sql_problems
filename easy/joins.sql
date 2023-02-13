@@ -69,3 +69,80 @@ select distinct p.*
  where r.reaction = 'heart'
 
 -- --------------------------------------------------------------------------------------------------------------------
+
+'''Order Details
+
+https://platform.stratascratch.com/coding/9913-order-details?code_type=1
+
+Find order details made by Jill and Eva.
+Consider the Jill and Eva as first names of customers.
+Output the order date, details and cost along with the first name.
+Order records based on the customer id in ascending order.
+
+customers
+
+id:           int
+first_name:   varchar
+last_name:    varchar
+city:         varchar
+address:      varchar
+phone_number: varchar
+
+orders
+
+id:               int
+cust_id:          int
+order_date:       datetime
+order_details:    varchar
+total_order_cost: int
+'''
+
+select c.first_name,
+       o.order_date,
+       o.order_details,
+       o.total_order_cost
+  from customers as c
+ inner join orders as o
+    on c.id = o.cust_id
+ where c.first_name in ('Eva', 'Jill')
+ order by c.id
+
+-- --------------------------------------------------------------------------------------------------------------------
+
+'''Customer Details
+
+https://platform.stratascratch.com/coding/9891-customer-details?code_type=1
+
+Find the details of each customer regardless of whether the customer made an order.
+Output the customer"s first name, last name, and the city along with the order details.
+You may have duplicate rows in your results due to a customer ordering several of the same items.
+Sort records based on the customer"s first name and the order details in ascending order.
+
+customers
+
+id:           int
+first_name:   varchar
+last_name:    varchar
+city:         varchar
+address:      varchar
+phone_number: varchar
+
+orders
+
+id:               int
+cust_id:          int
+order_date:       datetime
+order_details:    varchar
+total_order_cost: int
+'''
+
+select c.first_name,
+       c.last_name,
+       c.city,
+       o.order_details
+  from customers as c
+  left join orders as o
+    on c.id = o.cust_id
+ order by c.first_name, o.order_details
+
+-- --------------------------------------------------------------------------------------------------------------------
