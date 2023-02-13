@@ -36,3 +36,36 @@ select e.location,
  group by location;
 
 -- --------------------------------------------------------------------------------------------------------------------
+
+'''Find all posts which were reacted to with a heart
+
+https://platform.stratascratch.com/coding/10087-find-all-posts-which-were-reacted-to-with-a-heart?code_type=1
+
+Find all posts which were reacted to with a heart. For such posts output all columns from facebook_posts table.
+Heart reactions have the value of "heart" for the reaction column of the facebook_reactions dataset.
+A post can be liked by one of more users.
+
+facebook_reactions
+
+poster:   int
+friend:   int
+reaction: varchar
+date_day: int
+post_id:  int
+
+facebook_posts
+
+post_id:        int
+poster:         int
+post_text:      varchar
+post_keywords:  varchar
+post_date:      datetime
+'''
+
+select distinct p.*
+  from facebook_posts as p
+ inner join facebook_reactions as r
+    on p.post_id = r.post_id
+ where r.reaction = 'heart'
+
+-- --------------------------------------------------------------------------------------------------------------------
